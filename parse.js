@@ -1,4 +1,5 @@
-var json = require('./result.json');
+var args = process.argv.slice(2);
+var json = require('./'+args[0]+'.json');
 for (var tweet in json.globalObjects.tweets) {
     
     var userid = json.globalObjects.tweets[tweet].user_id;
@@ -17,5 +18,4 @@ for (var tweet in json.globalObjects.tweets) {
     } catch (error) {
 
     }
-
 }

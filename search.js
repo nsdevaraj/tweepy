@@ -30,7 +30,7 @@ const pevents = [
             }
         });
     });
-
-    await page.goto('https://twitter.com/search?q=%23INDvWI', { waitUntil: 'networkidle2' });
+    var args = process.argv.slice(2);
+    await page.goto('https://twitter.com/search?q='+args[0]+'&src=trend_click&vertical=trends', { waitUntil: 'networkidle2' });
     browser.close();
 })();
