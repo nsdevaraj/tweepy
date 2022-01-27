@@ -1,8 +1,13 @@
 node trend.js > out.json
 node trendlist.js > trends.txt
+i=0
 while read p; do
-  node search.js "$p" > "$p".json
+  ((i=i+1))
+  node search.js "$p" > "$i".json
 done <trends.txt
+echo 'trend,created,retweets,likes,replies,quotes,url,twitterId,username,followers,profileImage,media,tweet'> out.csv
+i=0
 while read p; do
-  node parse.js "$p" > "$p".csv
+  ((i=i+1))
+  node parse.js "$i" "$p" >> out.csv
 done <trends.txt
